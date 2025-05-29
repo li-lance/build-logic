@@ -11,7 +11,10 @@ class OpenApiGeneratorConventionPlugin : Plugin<Project> {
             apply<OpenApiGeneratorPlugin>()
             extensions.configure<OpenApiGeneratorGenerateExtension> {
                 generatorName.set("kotlin")
-                inputSpec.set("${projectDir.path}/openapi/api-pokemon.yml")
+//                inputSpec.set("${projectDir.path}/openapi/api-pokemon.yml")
+                val ymlPath = findProperty("openapiSpecPath") as? String
+                    ?: "${projectDir.path}/openapi/api-pokemon.yml"
+                inputSpec.set(ymlPath)
                 outputDir.set("${layout.buildDirectory.asFile.get().absolutePath}/openapi")
                 apiPackage.set("com.seraphim.pokemon.api")
                 modelPackage.set("com.seraphim.pokemon.model")
