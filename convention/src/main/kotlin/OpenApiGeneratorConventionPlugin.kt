@@ -13,12 +13,12 @@ class OpenApiGeneratorConventionPlugin : Plugin<Project> {
                 generatorName.set("kotlin")
 //                inputSpec.set("${projectDir.path}/openapi/api-pokemon.yml")
                 val ymlPath = findProperty("openapiSpecPath") as? String
-                    ?: "${projectDir.path}/openapi/api-pokemon.yml"
+                    ?: "${projectDir.path}/openapi/official-spotify-open-api.yml"
                 inputSpec.set(ymlPath)
                 outputDir.set("${layout.buildDirectory.asFile.get().absolutePath}/openapi")
-                apiPackage.set("com.seraphim.pokemon.api")
-                modelPackage.set("com.seraphim.pokemon.model")
-                packageName.set("com.seraphim.pokemon.invoker")
+                apiPackage.set("com.seraphim.music.api")
+                modelPackage.set("com.seraphim.music.model")
+                packageName.set("com.seraphim.music.invoker")
                 skipValidateSpec.set(true)
                 configOptions.putAll(
                     mapOf(
