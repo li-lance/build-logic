@@ -27,6 +27,7 @@ dependencies {
     compileOnly(libs.firebase.performance.gradlePlugin)
     compileOnly(libs.kotlin.gradlePlugin)
     compileOnly(libs.ksp.gradlePlugin)
+    compileOnly(libs.vanniktech.maven.publish.gradlePlugin)
     compileOnly(libs.room.gradlePlugin)
     implementation(libs.truth)
     lintChecks(libs.androidx.lint.gradle)
