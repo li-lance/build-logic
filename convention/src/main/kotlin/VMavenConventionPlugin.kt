@@ -8,18 +8,18 @@ class VMavenConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             apply(plugin = "com.vanniktech.maven.publish")
-            configureVMaven()
+//            configureVMaven()
         }
     }
 }
 
-internal fun Project.configureVMaven() {
-    extensions.configure<MavenPublishBaseExtension> {
-        publishToMavenCentral("")
-        coordinates("com.seraphim", project.name)
-        signAllPublications()
-        pom {
-
-        }
-    }
-}
+//internal fun Project.configureVMaven() {
+//    extensions.configure<MavenPublishBaseExtension> {
+//        publishToMavenCentral("")
+//        coordinates("com.seraphim", project.name)
+//        signAllPublications()
+//        pom {
+//
+//        }
+//    }
+//}

@@ -6,6 +6,7 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 
 internal fun Project.configureKotlinMultiplatform() {
     configure<KotlinMultiplatformExtension> {
+        jvmToolchain(21)
         androidTarget()
         iosX64()
         iosArm64()
