@@ -1,5 +1,6 @@
 import com.android.build.gradle.TestExtension
 import com.seraphim.plugin.configureKotlinAndroid
+import com.seraphim.plugin.targetSdkVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
@@ -13,7 +14,7 @@ class AndroidTestConventionPlugin : Plugin<Project> {
 
             extensions.configure<TestExtension> {
                 configureKotlinAndroid(this)
-                defaultConfig.targetSdk = project.findProperty("targetSdk")?.toString()?.toInt()
+                defaultConfig.targetSdk = project.targetSdkVersion
             }
         }
     }

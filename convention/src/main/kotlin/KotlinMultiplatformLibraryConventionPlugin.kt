@@ -1,6 +1,9 @@
 import com.android.build.gradle.LibraryExtension
+import com.seraphim.plugin.compileSdkVersion
 import com.seraphim.plugin.configureKotlinJvm
 import com.seraphim.plugin.configureKotlinMultiplatform
+import com.seraphim.plugin.minSdkVersion
+import com.seraphim.plugin.targetSdkVersion
 import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -15,9 +18,9 @@ class KotlinMultiplatformLibraryConventionPlugin : Plugin<Project> {
             apply(plugin = "org.jetbrains.kotlin.multiplatform")
             configureKotlinMultiplatform()
             extensions.configure<LibraryExtension> {
-                defaultConfig.targetSdk = project.findProperty("targetSdk")?.toString()?.toInt()
-                defaultConfig.minSdk = project.findProperty("minSdk")?.toString()?.toInt()
-                compileSdk = project.findProperty("compileSdk")?.toString()?.toInt()
+                defaultConfig.targetSdk = project.targetSdkVersion
+                defaultConfig.minSdk = project.minSdkVersion
+                compileSdk = project.compileSdkVersion
                 testOptions.animationsDisabled = true
             }
 

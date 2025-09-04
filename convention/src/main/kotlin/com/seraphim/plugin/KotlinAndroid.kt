@@ -19,17 +19,17 @@ internal fun Project.configureKotlinAndroid(
     commonExtension: CommonExtension<*, *, *, *, *, *>,
 ) {
     commonExtension.apply {
-        compileSdk = project.findProperty("compileSdk")?.toString()?.toInt()
+        compileSdk = project.compileSdkVersion
 
         defaultConfig {
-            minSdk = project.findProperty("minSdk")?.toString()?.toInt()
+            minSdk = project.minSdkVersion
         }
 
         compileOptions {
             // Up to Java 11 APIs are available through desugaring
             // https://developer.android.com/studio/write/java11-minimal-support-table
-            sourceCompatibility = JavaVersion.VERSION_11
-            targetCompatibility = JavaVersion.VERSION_11
+            sourceCompatibility = JavaVersion.VERSION_21
+            targetCompatibility = JavaVersion.VERSION_21
             isCoreLibraryDesugaringEnabled = true
         }
     }
@@ -48,8 +48,8 @@ internal fun Project.configureKotlinJvm() {
     extensions.configure<JavaPluginExtension> {
         // Up to Java 11 APIs are available through desugaring
         // https://developer.android.com/studio/write/java11-minimal-support-table
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
 
     configureKotlin<KotlinJvmProjectExtension>()
@@ -69,7 +69,7 @@ private inline fun <reified T : KotlinBaseExtension> Project.configureKotlin() =
         is KotlinJvmProjectExtension -> compilerOptions
         else -> TODO("Unsupported project extension $this ${T::class}")
     }.apply {
-        jvmTarget = JvmTarget.JVM_11
+        jvmTarget = JvmTarget.JVM_21
         allWarningsAsErrors = warningsAsErrors
         freeCompilerArgs.add(
             // Enable experimental coroutines APIs, including Flow

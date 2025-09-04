@@ -1,10 +1,12 @@
 import com.android.build.api.variant.LibraryAndroidComponentsExtension
 import com.android.build.gradle.LibraryExtension
+import com.seraphim.plugin.compileSdkVersion
 import com.seraphim.plugin.configureFlavors
 import com.seraphim.plugin.configureKotlinAndroid
 import com.seraphim.plugin.configurePrintApksTask
 import com.seraphim.plugin.disableUnnecessaryAndroidTests
 import com.seraphim.plugin.libs
+import com.seraphim.plugin.targetSdkVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
@@ -20,8 +22,8 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
 
             extensions.configure<LibraryExtension> {
                 configureKotlinAndroid(this)
-                defaultConfig.targetSdk = project.findProperty("targetSdk")?.toString()?.toInt()
-                compileSdk = project.findProperty("compileSdk")?.toString()?.toInt()
+                defaultConfig.targetSdk = project.targetSdkVersion
+                compileSdk = project.compileSdkVersion
                 defaultConfig.testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
                 testOptions.animationsDisabled = true
                 // The resource prefix is derived from the module name,
