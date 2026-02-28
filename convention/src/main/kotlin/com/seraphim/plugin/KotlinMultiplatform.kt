@@ -7,18 +7,12 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 internal fun Project.configureKotlinMultiplatform() {
     configure<KotlinMultiplatformExtension> {
         jvmToolchain(21)
-        androidTarget()
         iosX64()
         iosArm64()
         iosSimulatorArm64()
         sourceSets.commonMain {
             dependencies {
                 implementation("org.jetbrains.kotlin:kotlin-stdlib-common")
-            }
-        }
-        sourceSets.androidMain {
-            dependencies {
-                implementation("org.jetbrains.kotlin:kotlin-stdlib")
             }
         }
         compilerOptions {

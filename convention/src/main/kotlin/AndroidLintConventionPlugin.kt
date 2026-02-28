@@ -16,6 +16,9 @@ class AndroidLintConventionPlugin : Plugin<Project> {
                 pluginManager.hasPlugin("com.android.library") ->
                     configure<LibraryExtension> { lint(Lint::configure) }
 
+                pluginManager.hasPlugin("com.android.kotlin.multiplatform.library") ->
+                    configure<Lint>(Lint::configure)
+
                 else -> {
                     apply(plugin = "com.android.lint")
                     configure<Lint>(Lint::configure)
