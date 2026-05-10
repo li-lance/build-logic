@@ -113,5 +113,9 @@ gradlePlugin {
             id = libs.plugins.seraphim.spring.boot.get().pluginId
             implementationClass = "SprintBootConventionPlugin"
         }
+        register("vmaven") {
+            id = "seraphim.vmaven"
+            implementationClass = "VMavenConventionPlugin"
+        }
     }
 }
